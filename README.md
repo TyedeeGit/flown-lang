@@ -11,7 +11,7 @@ As a consequence, it is right-associative:
 ```
 z y x f = z (y (x f))
 ```
-Use parenthesis to nest:
+Use parentheses to nest:
 ```
 (x g) f // usually `f(g(x))` or `f (g x)`
 ```
@@ -19,7 +19,7 @@ If the *leftmost argument* is nested, you can use this syntax:
 ```
 x g |> f = (x g) f
 ```
-However, for nesting in other arguments, you still need paranthesis:
+However, for nesting in other arguments, you still need parentheses:
 ```
 x h |> (y g) f = (x h) (y g) f
 ```
