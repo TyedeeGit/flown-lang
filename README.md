@@ -2,28 +2,27 @@
 The Flown Programming Language is my personal experiment in creating a programming language. Flown is theory-first, heavily inspired by existing proof assistants such as Lean4, the borrow/ownership system from Rust, and linear logic.
 
 # Syntax
-Flown's syntax is postfix, and uses a special syntax for definitions.
-Function application in most languages is usually `f(x, y, z)` or `f x y z`. In Flown, it is
+Function application needs no paranthesis
 ```
-z y x f
+f x y z
 ```
-As a consequence, it is right-associative:
+As a consequence, it is left-associative:
 ```
-z y x f = z (y (x f))
+f x y z = ((f x) y) z
 ```
 Use parentheses to nest:
 ```
-(x g) f // usually `f(g(x))` or `f (g x)`
+f (g x)
 ```
-If the *leftmost argument* is nested, you can use this syntax:
+If the *rightmost argument* is nested, you can use this syntax:
 ```
-x g |> f = (x g) f
+f <| g x = f (g x)
 ```
 However, for nesting in other arguments, you still need parentheses:
 ```
-x h |> (y g) f = (x h) (y g) f
+f (g x) <| h x = f (g x) (h x)
 ```
-Piping is left-associative:
+Piping is right-associative:
 ```
-x h |> g |> f = (x h |> g) |> f = ((x h) g) f
+f <| g <| h x = f <| (g <| h x) = f (g (h x))
 ```
