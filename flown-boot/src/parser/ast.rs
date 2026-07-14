@@ -2,8 +2,19 @@ use crate::lexer::token::{Identifier, Literal};
 use crate::lexer::info::Spanning;
 
 #[derive(Debug, Clone)]
+pub struct Program {
+    pub stmts: Vec<Spanning<GlobalStatement>>,
+}
+
+#[derive(Debug, Clone)]
+pub enum GlobalStatement {
+    Empty,
+    Let(Spanning<LetStatement>),
+}
+
+#[derive(Debug, Clone)]
 pub enum Expression {
-    Ident(Spanning<Identifier>),
+    Bind(Spanning<Binding>),
     Lit(Spanning<Literal>),
     Call(Spanning<FunctionCall>),
     Mut(Spanning<MutableExpression>),
@@ -15,6 +26,12 @@ pub enum Expression {
     FuncTy(Spanning<FunctionType>),
     Lambda(Spanning<LambdaDef>),
     Block(Spanning<Block>),
+}
+
+#[derive(Debug, Clone)]
+pub struct Binding {
+    pub ns: Vec<Spanning<Identifier>>,
+    pub ident: Spanning<Identifier>,
 }
 
 #[derive(Debug, Clone)]
@@ -54,6 +71,7 @@ pub enum Statement {
 #[derive(Debug, Clone)]
 pub struct Block {
     pub stmts: Vec<Spanning<Statement>>,
+    pub ret: Option<Spanning<Box<Expression>>>,
 }
 
 #[derive(Debug, Clone)]
