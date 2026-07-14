@@ -34,8 +34,8 @@ mod tests {
     fn test_check_expression() {
         let expr = Expression::Block(Spanning {
             span: Span {
-                start: Location { line: 0, column: 0 },
-                end: Location { line: 0, column: 0 }
+                start: Location { line: 0, col: 0 },
+                end: Location { line: 0, col: 0 }
             },
             inner: Block { stmts: vec![], ret: None },
         });

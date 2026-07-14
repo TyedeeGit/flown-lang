@@ -1,7 +1,7 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Location {
     pub line: usize,
-    pub column: usize,
+    pub col: usize,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
