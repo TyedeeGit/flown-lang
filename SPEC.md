@@ -343,7 +343,7 @@ Affine types allow drops.
 A **copy** is a move occuring before another move, or before a drop.
 Reusable types allow copies.
 
-### 6.2. Finalize
+### 6.2. Shoves
 A **shove** is a move that is not a copy.
 
 ## 7. Order
