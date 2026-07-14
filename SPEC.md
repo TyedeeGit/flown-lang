@@ -336,11 +336,15 @@ You can omit the region with `&'mut T`
 A value is **moved** when it is used. The movement of a value is an event.
 
 ### 6.0. Drops
-A **drop** is when a value is not moved. Affine types allow drops.
+A **drop** is an event that occurs at the end of a scope where a value was not moved. 
+Affine types allow drops.
 
 ### 6.1. Copies
-A **copy** is when a value is moved before being moved again. Reusable types allow copies.
-The final move is not considered a copy.
+A **copy** is a move occuring before another move, or before a drop.
+Reusable types allow copies.
+
+### 6.2. Finalize
+A **shove** is a move that is not a copy.
 
 ## 7. Order
 
@@ -360,7 +364,7 @@ For any events A and B, A is **orderable-before** B when A *can* come before B.
 ## 8. The 4 laws
 1. **The No-Drop Law**: A value may only be dropped when it is of an affine type.
 2. **The No-Copy Law**: A value may only be copied when it is of a reusable type.
-3. **The Move-Access Law**: If a value is moved, any access to that value must be
-orderable-before the value's final move.
+3. **The Move-Access Law**: If a value is shoved, any access to that value must be
+orderable-before the shove.
 4. **The Borrow-Access Law**: For every borrow of a value and access to that value 
 distinct from that borrow, the borrow must be ordered-with the access.
