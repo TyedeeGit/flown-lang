@@ -1,4 +1,4 @@
-# Sailed Language Spec
+# Flown Language Spec
 
 ---
 
