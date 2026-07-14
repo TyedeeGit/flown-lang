@@ -314,3 +314,53 @@ returns through an output pointer.
 
 ### 4.4. Unwinding functions
 Certain functions unwind the stack. These are declared `unwinds`.
+
+## 5. Accesses and regions
+An **access** is a *borrow* or a *share*.
+
+### 5.0. Regions
+
+### 5.1. Shares
+A share is denoted with `&t`. The sharing of a value is an event.
+
+A share type is denoted `&a'T`, where `a` is a region and `T` is a type.
+You can omit the region with `&'T`.
+
+### 5.2. Borrows
+A borrow is denoted with `&mut t`. The borrowing of a value is an event.
+
+A borrow type is denoted `&a'mut T`, where `a` is a region and `T` is a type.
+You can omit the region with `&'mut T`
+
+## 6. Moves
+A value is **moved** when it is used. The movement of a value is an event.
+
+### 6.0. Drops
+A **drop** is when a value is not moved. Affine types allow drops.
+
+### 6.1. Copies
+A **copy** is when a value is moved before being moved again. Reusable types allow copies.
+The final move is not considered a copy.
+
+## 7. Order
+
+### 7.0. Ordered-before/after
+For any events A and B, A is **ordered-before** B when A *must* come before B.
+This relation is a strict partial order.
+**Ordered-after** is the converse relation.
+
+### 7.1. Ordered-with
+For any events A and B, A is **ordered-with** B when A is ordered-before *or* 
+ordered-after B.
+
+### 7.2. Orderable-before/after
+For any events A and B, A is **orderable-before** B when A *can* come before B.
+**Orderable-after** is the converse relation.
+
+## 8. The 4 laws
+1. **The No-Drop Law**: A value may only be dropped when it is of an affine type.
+2. **The No-Copy Law**: A value may only be copied when it is of a reusable type.
+3. **The Move-Access Law**: If a value is moved, any access to that value must be
+orderable-before the value's final move.
+4. **The Borrow-Access Law**: For every borrow of a value and access to that value 
+distinct from that borrow, the borrow must be ordered-with the access.
