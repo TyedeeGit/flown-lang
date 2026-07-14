@@ -26,6 +26,12 @@ pub enum Expression {
     FuncTy(Spanning<FunctionType>),
     Lambda(Spanning<LambdaDef>),
     Block(Spanning<Block>),
+    Intr(Spanning<Intrinsic>),
+}
+
+#[derive(Debug, Clone)]
+pub struct Intrinsic {
+    pub name: Spanning<Identifier>,
 }
 
 #[derive(Debug, Clone)]
