@@ -35,7 +35,8 @@ mod tests {
         let expr = Expression::Block(Spanning {
             span: Span {
                 start: Location { line: 0, col: 0 },
-                end: Location { line: 0, col: 0 }
+                end: Location { line: 0, col: 0 },
+                sl: "",
             },
             inner: Block { stmts: vec![], ret: None },
         });
