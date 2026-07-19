@@ -1,11 +1,15 @@
 use crate::parser::ast::{Program, Block, Expression};
 use super::error::SemanticError;
 
+mod pass0;
+
 pub fn check_program(prog: &Program) -> Result<(), SemanticError> {
+    pass0::check_program(prog)?;
     Ok(())
 }
 
 pub fn check_expression(expr: &Expression) -> Result<(), SemanticError> {
+    pass0::check_expression(expr)?;
     Ok(())
 }
 
