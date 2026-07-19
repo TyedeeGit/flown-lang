@@ -34,7 +34,7 @@ pub struct Intrinsic<'a> {
     pub name: Spanning<'a, Identifier>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Binding<'a> {
     pub ns: Vec<Spanning<'a, Identifier>>,
     pub ident: Spanning<'a, Identifier>,
