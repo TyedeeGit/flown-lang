@@ -171,9 +171,9 @@ If the field is implicit, just put the field name:
 ```
 You can then access the fields, but you must handle each in choosable branches:
 ```
-match
 | let n = msg.numberMsg => io.println("Recieved number: " + n.toString())
 | let s = msg.writtenMsg => io.println("Recieved text: " + s)
+;
 ```
 
 `variant`s are dual to `choice`s.
@@ -182,8 +182,8 @@ match
 A value of a `choice` type is an offering between the various fields.
 ```
 choice {
-   fst: () -> () moves,
-   snd: () -> () moves
+   fst: () -> () holds(any),
+   snd: () -> () holds(any)
 }
 ```
 To make an instance, assign to each field. Unlike `struct`s, you can move the same value twice:
@@ -212,7 +212,7 @@ choices.fst();
 A value of a `couple` is a composite of interacting fields available simultaneously.
 ```
 couple {
-   consumer: T -> Consume moves,
+   consumer: T -> Consume holds(any),
    producer: T
 }
 ```
