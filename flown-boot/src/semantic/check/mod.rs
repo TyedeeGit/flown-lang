@@ -5,10 +5,6 @@ pub fn check_program(prog: &Program) -> Result<(), SemanticError> {
     Ok(())
 }
 
-pub fn check_block(block: &Block) -> Result<(), SemanticError> {
-    Ok(())
-}
-
 pub fn check_expression(expr: &Expression) -> Result<(), SemanticError> {
     Ok(())
 }
@@ -22,12 +18,6 @@ mod tests {
     fn test_check_program() {
         let prog = Program { stmts: vec![] };
         check_program(&prog).unwrap();
-    }
-
-    #[test]
-    fn test_check_block() {
-        let block = Block { stmts: vec![], ret: None };
-        check_block(&block).unwrap();
     }
 
     #[test]
